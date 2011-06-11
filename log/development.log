@@ -27,3 +27,240 @@ Migrating to CreateUsers (20110609015520)
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:02:27 -0500
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 75ms (Views: 9.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-06-08 21:02:34 -0500
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (81.2ms)
+Rendered users/new.html.erb within layouts/application (111.3ms)
+Completed 200 OK in 128ms (Views: 117.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-06-08 21:03:29 -0500
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "user"=>{"name"=>"Travis W", "email"=>"travis@ts.com"}, "commit"=>"Create User"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ('Travis W', 'travis@ts.com', '2011-06-09 02:03:29.776330', '2011-06-09 02:03:29.776330')[0m
+Redirected to http://0.0.0.0:3000/users/1
+Completed 302 Found in 45ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-06-08 21:03:29 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered users/show.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 135ms (Views: 81.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-06-08 21:04:13 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 28ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-06-08 21:04:34 -0500
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered users/_form.html.erb (13.5ms)
+Rendered users/edit.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 68ms (Views: 23.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at 2011-06-08 21:04:44 -0500
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "user"=>{"name"=>"Travis Womble", "email"=>"travis@ts.com"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "users" SET "name" = 'Travis Womble', "updated_at" = '2011-06-09 02:04:44.990193' WHERE "users"."id" = 1
+Redirected to http://0.0.0.0:3000/users/1
+Completed 302 Found in 26ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-06-08 21:04:45 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (85.4ms)
+Completed 200 OK in 108ms (Views: 92.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:05:00 -0500
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+Rendered users/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 26ms (Views: 17.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at 2011-06-08 21:05:17 -0500
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = 1
+Redirected to http://0.0.0.0:3000/users
+Completed 302 Found in 52ms
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:05:17 -0500
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 25ms (Views: 15.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-06-08 21:05:25 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed   in 11ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=1):
+  app/controllers/users_controller.rb:16:in `show'
+
+Rendered /Users/t_wamble/.rvm/gems/ruby-1.9.2-p180@rails3tutorial/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/t_wamble/.rvm/gems/ruby-1.9.2-p180@rails3tutorial/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/t_wamble/.rvm/gems/ruby-1.9.2-p180@rails3tutorial/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:05:29 -0500
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 48ms (Views: 8.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-06-08 21:05:32 -0500
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (8.4ms)
+Rendered users/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 27ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-06-08 21:05:40 -0500
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "user"=>{"name"=>"Foo Bar", "email"=>"foo@bar.com"}, "commit"=>"Create User"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ('Foo Bar', 'foo@bar.com', '2011-06-09 02:05:40.906446', '2011-06-09 02:05:40.906446')
+Redirected to http://0.0.0.0:3000/users/2
+Completed 302 Found in 25ms
+
+
+Started GET "/users/2" for 127.0.0.1 at 2011-06-08 21:05:40 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 29ms (Views: 15.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:05:43 -0500
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+Rendered users/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 25ms (Views: 16.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-06-08 21:05:44 -0500
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (8.7ms)
+Rendered users/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 57ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-06-08 21:05:55 -0500
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "user"=>{"name"=>"Bas Quux", "email"=>"Bas@quuz.net"}, "commit"=>"Create User"}
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ('Bas Quux', 'Bas@quuz.net', '2011-06-09 02:05:55.366625', '2011-06-09 02:05:55.366625')[0m
+Redirected to http://0.0.0.0:3000/users/3
+Completed 302 Found in 25ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-06-08 21:05:55 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+Rendered users/show.html.erb within layouts/application (100.1ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:06:01 -0500
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 27ms (Views: 18.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-06-08 21:06:02 -0500
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (8.7ms)
+Rendered users/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 28ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-06-08 21:06:13 -0500
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pWlI+ibfXE01eu73x5/w0yCsNmMYTspk/PtlC5/jTKc=", "user"=>{"name"=>"Travis Womblr", "email"=>"travis@example.com"}, "commit"=>"Create User"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ('Travis Womblr', 'travis@example.com', '2011-06-09 02:06:13.167263', '2011-06-09 02:06:13.167263')
+Redirected to http://0.0.0.0:3000/users/4
+Completed 302 Found in 26ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-08 21:06:13 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 46ms (Views: 25.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-08 21:06:30 -0500
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+Rendered users/index.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 30ms (Views: 21.6ms | ActiveRecord: 0.5ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110609015520)
+Migrating to CreateMicroposts (20110611142355)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110609015520)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.6ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110609015520'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
